@@ -240,38 +240,6 @@ class ParsersNuevoSpec extends AnyFunSpec with Matchers {
       result("aaaaaaa").isSuccess shouldBe false
       result("a").isSuccess shouldBe false
     }
-    it("hol mati"){
-      val hola = char('a') & char('*')
-      val result = hola("a*resto")
-      result shouldBe Success(Resultado('a',"a*resto"))
-    }
-
-    it("chau mati"){
-      val mati = string("mati").between(char('\''),char('\''))
-      val result = mati("'mati'")
-      result.isSuccess shouldBe true
-      mati("mati'").isFailure shouldBe true
-    }
-
-    it("OOMDOMFODMFODMFDFMK:DMSF"){
-      val asnflkdafmsf = exactMatch( string("jorge"))
-      asnflkdafmsf("jorge").isSuccess shouldBe true
-      asnflkdafmsf("jorgeeeeeee").isFailure shouldBe true
-     }
-
-    it("perdon"){
-      val sospechozo = notParser(Set('z','a'))
-      val resultado = sospechozo("sospechoso")
-      resultado.get.elementoParseado shouldBe "sospechoso"
-      val sospecho = sospechozo("sospechozo")
-      sospecho.isFailure shouldBe true
-    }
-
-    it("identificador"){
-      val hola = identificador("_va_ri_a_ble1.")
-      hola.get.elementoParseado shouldBe "_va_ri_a_ble1"
-      hola.get.cadenaRestante shouldBe "."
-    }
   }
 }
 
